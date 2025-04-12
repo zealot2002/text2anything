@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text2Mind</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 500px;
+            margin-bottom: 10px;
+            font-family: monospace;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Text2Mind</h1>
+    <p>Convert indented text to a mind map XMind file.</p>
+    <p>Use 4 spaces to indicate levels in the hierarchy. The tool will automatically convert your text to a mind map.</p>
+    
+    {% if error %}
+    <p class="error">{{ error }}</p>
+    {% endif %}
+    
+    <form action="/convert" method="post">
+        <textarea name="text" placeholder="Enter your indented text here...">Python Programming
+    Core Concepts
+        Variables
+        Data Types
+    Advanced Topics
+        Object-Oriented Programming
+            Classes
+            Inheritance</textarea>
+        <br>
+        <button type="submit">Download XMind File</button>
+    </form>
+    <p><small>Note: The generated mind map will use special layout settings to ensure all content is displayed.</small></p>
+</body>
+</html>
