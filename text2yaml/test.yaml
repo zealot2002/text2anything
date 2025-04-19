@@ -1,0 +1,160 @@
+graph:
+  title: 宠物活体销售及相关流程
+  groups:
+    - name: 卖家
+      description: 卖家相关操作流程
+      nodes:
+        - id: 直播售卖宠物活体
+          label: 直播售卖宠物活体
+          shape: rectangle
+        - id: 买卖双方唯一性确认(项圈绑定)
+          label: 买卖双方唯一性确认(项圈绑定)
+          shape: rectangle
+        - id: 客户在电商平台下单(生成订单编号)
+          label: 客户在电商平台下单(生成订单编号)
+          shape: rectangle
+        - id: 卖家录入信息并打印标签
+          label: 卖家录入信息并打印标签
+          shape: rectangle
+        - id: 交至宠无忧QIC检验中心
+          label: 交至宠无忧QIC检验中心
+          shape: rectangle
+    - name: 宠无忧QIC检测中心
+      description: 宠无忧QIC检测中心操作流程
+      nodes:
+        - id: 接收宠物活体、项圈扫码，录入买家信息
+          label: 接收宠物活体、项圈扫码，录入买家信息
+          shape: rectangle
+        - id: 按订单需求选择检查套餐
+          label: 按订单需求选择检查套餐
+          shape: rectangle
+        - id: 根据QIC标准检查
+          label: 根据QIC标准检查
+          shape: rectangle
+        - id: 是否合格
+          label: 是否合格
+          shape: diamond
+        - id: 合格
+          label: 合格
+          shape: rectangle
+        - id: 不合格
+          label: 不合格
+          shape: rectangle
+        - id: 退回卖家
+          label: 退回卖家
+          shape: rectangle
+        - id: 全程视频留证
+          label: 全程视频留证
+          shape: rectangle
+        - id: 投保
+          label: 投保
+          shape: rectangle
+      note: 在QIC工作台双摄像头监控下\n镜头视野内包含经公证签封的时钟
+    - name: 保司（华泰）
+      description: 保司相关流程
+      nodes:
+        - id: 根据保司要求对接流程
+          label: 根据保司要求对接流程
+          shape: rectangle
+        - id: 生成保单 保险生效
+          label: 生成保单 保险生效
+          shape: rectangle
+        - id: 持续保障 后续出险
+          label: 持续保障 后续出险
+          shape: rectangle
+        - id: 不接收非被保险人出险报告\n具体流程与保司商议对接
+          label: 不接收非被保险人出险报告\n具体流程与保司商议对接
+          shape: rectangle
+      note: 本部分为流程组
+    - name: 物流（顺丰）
+      description: 物流相关流程
+      nodes:
+        - id: 物流下单
+          label: 物流下单
+          shape: rectangle
+        - id: 信息回传
+          label: 信息回传
+          shape: rectangle
+        - id: 物流配送
+          label: 物流配送
+          shape: rectangle
+        - id: 收货开箱
+          label: 收货开箱
+          shape: rectangle
+        - id: 快递员当场指导买家开箱验货并视频记录，确认项圈编码与订单一致性
+          label: 快递员当场指导买家开箱验货并视频记录，确认项圈编码与订单一致性
+          shape: rectangle
+        - id: 宠无忧对接卖家用端口，在电商平台同步物流信息
+          label: 宠无忧对接卖家用端口，在电商平台同步物流信息
+          shape: rectangle
+        - id: 统一物流编号、订单编号、保单号、芯片/项圈信息
+          label: 统一物流编号、订单编号、保单号、芯片/项圈信息
+          shape: rectangle
+      note: 仅为物流服务，不承担售后保障
+    - name: 宠无忧售后组
+      description: 宠无忧售后组相关流程
+      nodes:
+        - id: 宠无忧售后服务启动
+          label: 宠无忧售后服务启动
+          shape: rectangle
+        - id: 月嫂服务SOP、科学喂养全家桶、宠物4S店服务
+          label: 月嫂服务SOP、科学喂养全家桶、宠物4S店服务
+          shape: rectangle
+      note: 联动
+  edges:
+    - source: 直播售卖宠物活体
+      target: 买卖双方唯一性确认(项圈绑定)
+    - source: 买卖双方唯一性确认(项圈绑定)
+      target: 客户在电商平台下单(生成订单编号)
+    - source: 客户在电商平台下单(生成订单编号)
+      target: 卖家录入信息并打印标签
+    - source: 卖家录入信息并打印标签
+      target: 交至宠无忧QIC检验中心
+    - source: 交至宠无忧QIC检验中心
+      target: 接收宠物活体、项圈扫码，录入买家信息
+    - source: 接收宠物活体、项圈扫码，录入买家信息
+      target: 按订单需求选择检查套餐
+    - source: 按订单需求选择检查套餐
+      target: 根据QIC标准检查
+    - source: 根据QIC标准检查
+      target: 是否合格
+    - source: 是否合格
+      target: 合格
+      label: 是
+    - source: 是否合格
+      target: 不合格
+      label: 否
+    - source: 合格
+      target: 投保
+    - source: 不合格
+      target: 退回卖家
+    - source: 根据QIC标准检查
+      target: 全程视频留证
+    - source: 投保
+      target: 根据保司要求对接流程
+    - source: 根据保司要求对接流程
+      target: 生成保单 保险生效
+    - source: 生成保单 保险生效
+      target: 持续保障 后续出险
+    - source: 持续保障 后续出险
+      target: 不接收非被保险人出险报告\n具体流程与保司商议对接
+    - source: 生成保单 保险生效
+      target: 物流下单
+    - source: 物流下单
+      target: 信息回传
+    - source: 信息回传
+      target: 物流配送
+    - source: 物流配送
+      target: 收货开箱
+    - source: 收货开箱
+      target: 快递员当场指导买家开箱验货并视频记录，确认项圈编码与订单一致性
+    - source: 快递员当场指导买家开箱验货并视频记录，确认项圈编码与订单一致性
+      target: 宠无忧对接卖家用端口，在电商平台同步物流信息
+    - source: 物流下单
+      target: 统一物流编号、订单编号、保单号、芯片/项圈信息
+    - source: 快递员当场指导买家开箱验货并视频记录，确认项圈编码与订单一致性
+      target: 宠无忧售后服务启动
+    - source: 持续保障 后续出险
+      target: 宠无忧售后服务启动
+    - source: 宠无忧售后服务启动
+      target: 月嫂服务SOP、科学喂养全家桶、宠物4S店服务
